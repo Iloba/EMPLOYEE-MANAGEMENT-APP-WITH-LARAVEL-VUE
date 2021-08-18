@@ -15,6 +15,7 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+                    nnghmjmh,jm
                 </div>
             </div>
         </div>
