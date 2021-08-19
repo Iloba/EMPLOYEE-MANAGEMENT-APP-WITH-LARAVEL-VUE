@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UserStoreRequest;
+use App\Http\Requests\UserUpdateRequest;
 
 class UserController extends Controller
 {
@@ -56,10 +57,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+    // public function show($id)
+    // {
+    //     //
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -79,7 +80,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserUpdateRequest $request, $id)
     {
         $user = User::find($id);
 
@@ -104,8 +105,16 @@ class UserController extends Controller
     {
         $user = User::find($id);
 
+        if(auth()->user()->id == $user->id){
+            return redirect()->route('users.index')->with('message', 'You cannnot Delete yourself');
+        }
+
         $user->delete();
 
         return redirect()->route('users.index')->with('message', 'User Successfully Deleted');
+    }
+
+    public function search(Request $request){
+        dd($request->all());
     }
 }

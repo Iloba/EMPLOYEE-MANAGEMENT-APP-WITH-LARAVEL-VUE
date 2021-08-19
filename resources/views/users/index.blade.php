@@ -6,9 +6,28 @@
     </div> <br>
     <div class="card mt-5 mx-auto"> 
         <div class="card-header">
-            <a class="btn btn-info float-right" href="{{route('users.create')}}">Create</a>
+         <div>
+            <a class="btn btn-info float-right mb-4" href="{{route('users.create')}}">Create</a>
+         </div>
+
+            <div class="">
+                <form action="{{route('search-users')}}" method="POST">
+                    @csrf
+                    @method('GET')
+                    
+                        <label class="sr-only" for="inlineFormInputGroup">Username</label>
+                        <div class="input-group mb-2">
+                            <input type="text" class="form-control" name="search" id="inlineFormInputGroup" placeholder="Search">
+                        <div class="input-group-prepend">
+                            <button type="submit" class="input-group-text btn btn-info"><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
+         
         <div class="card-body">
+           
             <div>
                 @if (session('message'))
                     <div class="alert alert-success" role="alert">
