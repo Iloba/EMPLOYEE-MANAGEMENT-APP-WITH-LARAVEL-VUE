@@ -81,7 +81,15 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+
+        $user->username = is_null($request->username) ? $user->username : $request->username;
+        $user->lastname = is_null($request->lastname) ? $user->lastname : $request->lastname;
+        $user->firstname = is_null($request->firstname) ? $user->firstname : $request->firstname;
+        $user->email = is_null($request->email) ? $user->email : $request->email;
+        $user->password = is_null($request->password) ? $user->password : Hash::make($request->password);
+       
+        $user->save();
     }
 
     /**

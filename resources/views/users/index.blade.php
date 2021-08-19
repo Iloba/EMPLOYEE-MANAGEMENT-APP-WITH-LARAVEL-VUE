@@ -19,15 +19,14 @@
             <div class="table-responsive">
                 <table class="table table-stripe p-2">
                     <thead class="text-dark">
-                        
                             <tr>
                                 <th>S/NO</th>
                                 <th>Username</th>
                                 <th>Last Name</th>
                                 <th>First Name</th>
+                                <th>Email</th>
                                 <th>Manage</th>
                             </tr>
-                       
                     </thead>
                     <tbody>
                         @foreach ($users as $user)
@@ -36,8 +35,10 @@
                                 <td>{{$user->username}}</td>
                                 <td>{{$user->lastname}}</td>
                                 <td>{{$user->firstname}}</td>
+                                <td>{{$user->email}}</td>
                                 <td>
                                     <a class="text-info m-3" href="{{route('users.edit', $user)}}"><i class="fa fa-edit"></i></a>
+                                    
                                     <a onclick="
                                         event.preventDefault();
                                         if(confirm('are you sure you wanna delete??')){
@@ -53,7 +54,6 @@
                                     </form>
                                 </td>
                                 <td></td>
-                                
                             </tr>
                         @endforeach
                     </tbody>
