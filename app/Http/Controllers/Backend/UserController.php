@@ -17,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::latest()->get();
         return view('users.index', compact('users'));
     }
 
@@ -90,6 +90,8 @@ class UserController extends Controller
         $user->password = is_null($request->password) ? $user->password : Hash::make($request->password);
        
         $user->save();
+
+        return redirect()->route('users.index')->with('message', 'User Data Updated Successfully');
     }
 
     /**
@@ -102,6 +104,8 @@ class UserController extends Controller
     {
         $user = User::find($id);
 
-        dd($user);
+        $user->delete();
+
+        return redirect()->route('users.index')->with('message', 'User Successfully Deleted');
     }
 }

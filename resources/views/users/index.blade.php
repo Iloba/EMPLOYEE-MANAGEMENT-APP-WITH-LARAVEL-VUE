@@ -20,7 +20,7 @@
                 <table class="table table-stripe p-2">
                     <thead class="text-dark">
                             <tr>
-                                <th>S/NO</th>
+                                <th>USER ID</th>
                                 <th>Username</th>
                                 <th>Last Name</th>
                                 <th>First Name</th>
@@ -38,7 +38,7 @@
                                 <td>{{$user->email}}</td>
                                 <td>
                                     <a class="text-info m-3" href="{{route('users.edit', $user)}}"><i class="fa fa-edit"></i></a>
-                                    
+
                                     <a onclick="
                                         event.preventDefault();
                                         if(confirm('are you sure you wanna delete??')){
