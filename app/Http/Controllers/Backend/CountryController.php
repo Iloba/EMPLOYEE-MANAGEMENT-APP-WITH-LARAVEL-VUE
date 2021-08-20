@@ -6,6 +6,7 @@ use App\Models\Country;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CountryRequest;
+use App\Http\Requests\CountryUpdateRequest;
 
 class CountryController extends Controller
 {
@@ -19,7 +20,7 @@ class CountryController extends Controller
 
         $countries = Country::Latest()->get();
         if($request->has('search')){
-            $countries = Country::where('country_code', 'like', "%{$request->country_code}%")->orWhere('name', 'like', "%{$request->name}%")->get();
+            $countries = Country::where('country_code', 'like', "%{$request->search}%")->orWhere('name', 'like', "%{$request->search}%")->get();
          }
        
 
@@ -68,9 +69,9 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Country $country)
     {
-        //
+        return view('country.edit', compact('country'));
     }
 
     /**
@@ -80,9 +81,16 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CountryUpdateRequest  $request, $id)
     {
-        //
+        $country = Country::find($id);
+
+        $country->country_code = is_null($request->country_code) ? $country->country_code : $request->country_code;
+        $country->name = is_null($request->name) ? $country->name : $request->name;
+
+        $country->save();
+
+        return redirect()->route('countries.index')->with('message', 'Country Updated Successfully');
     }
 
     /**

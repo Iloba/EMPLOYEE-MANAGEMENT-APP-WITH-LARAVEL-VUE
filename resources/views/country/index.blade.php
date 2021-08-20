@@ -39,7 +39,7 @@
                 <table class="table table-stripe p-2">
                     <thead class="text-dark">
                             <tr>
-                                <th>USER ID</th>
+                                <th>ID</th>
                                 <th>Country Code</th>
                                 <th>Name</th>
                                 

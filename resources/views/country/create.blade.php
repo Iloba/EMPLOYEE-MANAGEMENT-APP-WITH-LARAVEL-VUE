@@ -8,7 +8,12 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Add Country') }}</div>
+                    <div class="card-header">
+                        {{ __('Add Country') }}
+                        
+                        <a class="btn btn-info btn-sm float-right" href="{{route('countries.index')}}">Back</a>
+
+                    </div>
     
                     <div class="card-body">
                         <form method="POST" action="{{ route('countries.store') }}">
