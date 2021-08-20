@@ -16,9 +16,15 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $users = User::latest()->get();
+        if($request->has('search')){
+            $users = User::where('username', 'like', "%{$request->search}%")->orWhere('email', 'like', "%$request->search%")->get();
+        }
+
+
+        
         return view('users.index', compact('users'));
     }
 
@@ -114,7 +120,5 @@ class UserController extends Controller
         return redirect()->route('users.index')->with('message', 'User Successfully Deleted');
     }
 
-    public function search(Request $request){
-        dd($request->all());
-    }
+  
 }

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Backend\CountryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,5 +24,6 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('users', UserController::class);
+Route::resource('countries', CountryController::class);
 
-Route::get('/search-user', [UserController::class, 'search'])->name('search-users');
+

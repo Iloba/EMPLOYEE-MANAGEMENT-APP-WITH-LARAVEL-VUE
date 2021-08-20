@@ -7,7 +7,7 @@
     <div class="card mt-5 mx-auto"> 
         <div class="card-header">
          <div>
-            <a class="btn btn-info float-right mb-4" href="{{route('users.create')}}">Create</a>
+            <a class="btn btn-info float-right mb-4" href="{{route('countries.create')}}">Add</a>
          </div>
 
             <div class="">
@@ -40,34 +40,32 @@
                     <thead class="text-dark">
                             <tr>
                                 <th>USER ID</th>
-                                <th>Username</th>
-                                <th>Last Name</th>
-                                <th>First Name</th>
-                                <th>Email</th>
+                                <th>Country Code</th>
+                                <th>Name</th>
+                                
                                 <th>Manage</th>
                             </tr>
                     </thead>
                     <tbody>
-                        @foreach ($users as $user)
+                        @foreach ($countries as $country)
                             <tr>
-                                <td>{{$user->id}}</td>
-                                <td>{{$user->username}}</td>
-                                <td>{{$user->lastname}}</td>
-                                <td>{{$user->firstname}}</td>
-                                <td>{{$user->email}}</td>
+                                <td>{{$country->id}}</td>
+                                <td>{{$country->country_code}}</td>
+                                <td>{{$country->name}}</td>
+                               
                                 <td>
-                                    <a class="text-info m-3" href="{{route('users.edit', $user)}}"><i class="fa fa-edit"></i></a>
+                                    <a class="text-info m-3" href="{{route('countries.edit', $country)}}"><i class="fa fa-edit"></i></a>
 
                                     <a onclick="
                                         event.preventDefault();
                                         if(confirm('are you sure you wanna delete??')){
-                                            document.getElementById('{{'form-delete'.$user->id}}').submit();
+                                            document.getElementById('{{'form-delete'.$country->id}}').submit();
                                         }
                                     
                                     
-                                    " class="text-danger m-1" href="{{route('users.destroy', $user)}}"><i class="fa fa-trash"></i></a>
+                                    " class="text-danger m-1" href="{{route('countries.destroy', $country)}}"><i class="fa fa-trash"></i></a>
 
-                                    <form action="{{route('users.destroy', $user)}}" method="POST" id="{{'form-delete'.$user->id}}">
+                                    <form action="{{route('users.destroy', $user)}}" method="POST" id="{{'form-delete'.$country->id}}">
                                         @csrf
                                         @method('DELETE')
                                     </form>
