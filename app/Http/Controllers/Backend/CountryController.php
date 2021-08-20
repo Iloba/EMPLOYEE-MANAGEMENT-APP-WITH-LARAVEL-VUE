@@ -14,9 +14,16 @@ class CountryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $countries = Country::latest()->get();
+
+        $countries = Country::Latest()->get();
+        if($request->has('search')){
+            $countries = Country::where('country_code', 'like', "%{$request->country_code}%")->orWhere('name', 'like', "%{$request->name}%")->get();
+         }
+       
+
+      
 
         return view('country.index', compact('countries'));
     }
@@ -39,7 +46,9 @@ class CountryController extends Controller
      */
     public function store(CountryRequest $request)
     {
-        //
+        Country::create($request->validated());
+
+        return redirect()->route('countries.index')->with('message', 'Country Created Successfully');
     }
 
     /**

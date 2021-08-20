@@ -11,7 +11,7 @@
          </div>
 
             <div class="">
-                <form action="{{route('users.index')}}" method="POST">
+                <form action="{{route('countries.index')}}" method="POST">
                     @csrf
                     @method('GET')
                     
@@ -65,7 +65,7 @@
                                     
                                     " class="text-danger m-1" href="{{route('countries.destroy', $country)}}"><i class="fa fa-trash"></i></a>
 
-                                    <form action="{{route('users.destroy', $user)}}" method="POST" id="{{'form-delete'.$country->id}}">
+                                    <form action="{{route('users.destroy', $country)}}" method="POST" id="{{'form-delete'.$country->id}}">
                                         @csrf
                                         @method('DELETE')
                                     </form>
