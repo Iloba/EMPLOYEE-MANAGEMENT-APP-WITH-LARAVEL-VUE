@@ -108,14 +108,14 @@
                     </div>
                     
                     <div class="card-body">
-                    <button  onclick="
+                        <button  onclick="
 
-                        event.preventDefault();
-                        if(confirm('{{'Are you sure you want to delete '.$user->username}}')){
-                            document.getElementById('{{'form-delete-'.$user->id}}').submit();
-                        }
-                    
-                    "
+                            event.preventDefault();
+                            if(confirm('{{'Are you sure you want to delete '.$user->username}}')){
+                                document.getElementById('{{'form-delete-'.$user->id}}').submit();
+                            }
+                        
+                        "
                         
                     class="btn btn-danger">Delete {{$user->username}}
                     </button>

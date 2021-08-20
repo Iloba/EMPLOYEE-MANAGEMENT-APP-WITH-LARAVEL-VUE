@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Backend\StateController;
 use App\Http\Controllers\Backend\CountryController;
 
 /*
@@ -25,5 +26,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('users', UserController::class);
 Route::resource('countries', CountryController::class);
+Route::resource('states', StateController::class);
 
 
