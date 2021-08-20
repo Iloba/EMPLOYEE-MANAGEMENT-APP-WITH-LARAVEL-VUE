@@ -101,6 +101,10 @@ class CountryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $country = Country::find($id);
+
+        $country->delete();
+
+        return redirect()->route('countries.index')->with('message', 'Country Deleted Successfully');
     }
 }

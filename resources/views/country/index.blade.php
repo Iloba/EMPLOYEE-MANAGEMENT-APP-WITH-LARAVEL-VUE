@@ -65,7 +65,7 @@
                                     
                                     " class="text-danger m-1" href="{{route('countries.destroy', $country)}}"><i class="fa fa-trash"></i></a>
 
-                                    <form action="{{route('users.destroy', $country)}}" method="POST" id="{{'form-delete'.$country->id}}">
+                                    <form action="{{route('countries.destroy', $country)}}" method="POST" id="{{'form-delete'.$country->id}}">
                                         @csrf
                                         @method('DELETE')
                                     </form>
