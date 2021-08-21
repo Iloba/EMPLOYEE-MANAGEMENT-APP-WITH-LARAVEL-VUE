@@ -82,18 +82,19 @@ class StateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, State $state)
     {
 
         if($request->country_id === '--Select--'){
             return redirect()->back()->with('error', 'Please Select a Country');
         }
 
-        $state = State::find($id);
-        $state->country_id = $request->country_id;
-        $state->name = $request->name;
+        $state->update([
+            'country_id' => $request->country_id,
+            'name' => $request->name
+        ]);
 
-        $state->save();
+        
       
 
         return redirect()->route('states.index')->with('message', 'State Updated Successfully');
