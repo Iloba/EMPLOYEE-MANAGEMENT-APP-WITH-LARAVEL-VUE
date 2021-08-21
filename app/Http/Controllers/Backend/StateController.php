@@ -15,10 +15,16 @@ class StateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
 
+
+
         $states = State::latest()->get();
+        if($request->has('search')){
+            $states = State::Where('name', 'like', "%{$request->search}%")->get();
+        }
+
         return view('state.index', compact('states'));
     }
 
@@ -94,6 +100,7 @@ class StateController extends Controller
             'name' => $request->name
         ]);
 
+        
         
       
 

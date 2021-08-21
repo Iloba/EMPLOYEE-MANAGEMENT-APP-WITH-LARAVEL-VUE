@@ -67,7 +67,7 @@
                         <h6 class="collapse-header">Manage System</h6>
                         <a class="collapse-item" href="{{route('countries.index')}}">Country</a>
                         <a class="collapse-item" href="{{route('states.index')}}">State</a>
-                        <a class="collapse-item" href="cards.html">City</a>
+                        <a class="collapse-item" href="{{route('cities.index')}}">City</a>
                         <a class="collapse-item" href="cards.html">Department</a>
                     </div>
                 </div>
