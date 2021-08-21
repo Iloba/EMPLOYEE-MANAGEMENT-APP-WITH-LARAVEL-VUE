@@ -2,14 +2,15 @@
 
 @section('content')
     <div class="">
-        <h1 class="h3 mb-0 text-gray-800">Users</h1> 
+        <h1 class="h3 mb-0 text-gray-800">Update State</h1> 
     </div> <br>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
+                @include('layouts.messages')
                 <div class="card">
                     <div class="card-header">
-                        {{ __('Update Country') }}
+                        {{ __('Update State') }}
                         
                         <a class="btn btn-info btn-sm float-right" href="{{route('states.index')}}">Back</a>
 
@@ -25,9 +26,9 @@
                                 <div class="col-md-6">
                                    
                                     <select name="country_id" id="" class="form-control">
-                                        <option value="{{$state->country->country_id}}">{{$state->country->country_id}}</option>
+                                        <option selected value="--Select--">--Select--</option>
                                         @foreach ($countries  as $country)
-                                            <option value="{{$state->country->country_id}}">{{$state->country->country_id}}</option>
+                                            <option value="{{$country->country_id}}">{{$country->name}}</option>
                                         @endforeach
                                        
                                     </select>
@@ -55,7 +56,7 @@
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
-                                        {{ __('Update Country') }}
+                                        {{ __('Update State') }}
                                     </button>
                                 </div>
                             </div>

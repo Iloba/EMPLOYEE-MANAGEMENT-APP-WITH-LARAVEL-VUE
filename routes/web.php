@@ -24,8 +24,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('users', UserController::class);
-Route::resource('countries', CountryController::class);
-Route::resource('states', StateController::class);
+Route::resource('users', UserController::class)->middleware('auth');
+Route::resource('countries', CountryController::class)->middleware('auth');
+Route::resource('states', StateController::class)->middleware('auth');
 
 

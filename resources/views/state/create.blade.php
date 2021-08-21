@@ -7,6 +7,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
+                    @include('layouts.messages')
                 <div class="card">
                     <div class="card-header">
                         {{ __('Add Country') }}
@@ -24,7 +25,8 @@
     
                                 <div class="col-md-6">
                                     <select name="country_id" id="" class="form-control">
-                                        <option selected>---Select---</option>
+                                        
+                                        <option selected value="--Select--">--Select--</option>
                                         @foreach ($countries  as $country)
                                       
                                         <option value="{{$country->id}}">{{$country->name}}</option>

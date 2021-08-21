@@ -40,7 +40,13 @@ class StateController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(StateStoreRequest $request)
-    {
+    {   
+       
+        if($request->country_id === '--Select--'){
+            return redirect()->back()->with('error', 'Please Select a Country');
+        }
+
+
         State::create($request->validated());
 
         return redirect()->route('states.index')->with('message', 'State Created Successfully');
@@ -76,11 +82,19 @@ class StateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StateStoreRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $state = State::find($id);
 
-        State::update($request->validated());
+        if($request->country_id === '--Select--'){
+            return redirect()->back()->with('error', 'Please Select a Country');
+        }
+
+        $state = State::find($id);
+        $state->country->id = $request->country_code;
+        $state->name = $request->name;
+
+        $state->save();
+      
 
         return redirect()->route('states.index')->with('message', 'State Updated Successfully');
         
