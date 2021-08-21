@@ -54,7 +54,7 @@
                                 <td>{{$state->name}}</td>
                                
                                 <td>
-                                    <a class="text-info m-3" href="{{route('state.edit', $state)}}"><i class="fa fa-edit"></i></a>
+                                    <a class="text-info m-3" href="{{route('states.edit', $state)}}"><i class="fa fa-edit"></i></a>
 
                                     <a onclick="
                                         event.preventDefault();
@@ -63,7 +63,7 @@
                                         }
                                     
                                     
-                                    " class="text-danger m-1" href="{{route('state.destroy', $state)}}"><i class="fa fa-trash"></i></a>
+                                    " class="text-danger m-1" href="{{route('states.destroy', $state)}}"><i class="fa fa-trash"></i></a>
 
                                     <form action="{{route('states.destroy', $state)}}" method="POST" id="{{'form-delete'.$state->id}}">
                                         @csrf

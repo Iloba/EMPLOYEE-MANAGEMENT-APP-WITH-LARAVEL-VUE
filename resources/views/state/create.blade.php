@@ -24,7 +24,9 @@
     
                                 <div class="col-md-6">
                                     <select name="country_id" id="" class="form-control">
+                                        <option selected>---Select---</option>
                                         @foreach ($countries  as $country)
+                                      
                                         <option value="{{$country->id}}">{{$country->name}}</option>
                                         @endforeach
                                        

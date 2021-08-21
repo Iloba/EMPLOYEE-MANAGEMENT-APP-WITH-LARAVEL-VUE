@@ -41,7 +41,9 @@ class StateController extends Controller
      */
     public function store(StateStoreRequest $request)
     {
-        
+        State::create($request->validated());
+
+        return redirect()->route('states.index')->with('message', 'State Created Successfully');
     }
 
     /**
@@ -63,7 +65,8 @@ class StateController extends Controller
      */
     public function edit(State $state)
     {
-        return view('state.edit', compact('state'));
+        $countries = Country::all();
+        return view('state.edit', compact(['state', 'countries']));
     }
 
     /**
@@ -73,9 +76,14 @@ class StateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StateStoreRequest $request, $id)
     {
-        //
+        $state = State::find($id);
+
+        State::update($request->validated());
+
+        return redirect()->route('states.index')->with('message', 'State Updated Successfully');
+        
     }
 
     /**
@@ -86,6 +94,10 @@ class StateController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $state = State::find($id);
+
+        $state->delete();
+
+        return redirect()->route('states.index')->with('message', 'State Deleted Successfully');
     }
 }
