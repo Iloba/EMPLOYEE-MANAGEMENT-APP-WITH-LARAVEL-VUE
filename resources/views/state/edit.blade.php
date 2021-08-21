@@ -28,7 +28,7 @@
                                     <select name="country_id" id="" class="form-control">
                                         <option selected value="--Select--">--Select--</option>
                                         @foreach ($countries  as $country)
-                                            <option value="{{$country->country_id}}">{{$country->name}}</option>
+                                            <option value="{{$country->id}}">{{$country->name}}</option>
                                         @endforeach
                                        
                                     </select>

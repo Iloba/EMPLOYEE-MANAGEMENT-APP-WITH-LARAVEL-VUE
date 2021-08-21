@@ -90,7 +90,7 @@ class StateController extends Controller
         }
 
         $state = State::find($id);
-        $state->country->id = $request->country_code;
+        $state->country_id = $request->country_id;
         $state->name = $request->name;
 
         $state->save();
