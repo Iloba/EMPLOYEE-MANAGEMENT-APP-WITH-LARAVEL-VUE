@@ -82,7 +82,7 @@
                         
                     class="btn btn-danger">Delete {{$city->name}}
                     </button>
-                        <form action="{{route('cities.destroy', $state->id)}}" method="POST" id="{{'form-delete-'.$city->id}}">
+                        <form action="{{route('cities.destroy', $city->id)}}" method="POST" id="{{'form-delete-'.$city->id}}">
                             @csrf
                             @method('DELETE')
                        

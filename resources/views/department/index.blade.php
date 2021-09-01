@@ -2,16 +2,16 @@
 
 @section('content')
     <div class="">
-        <h1 class="h3 mb-0 text-gray-800">Cities</h1> 
+        <h1 class="h3 mb-0 text-gray-800">Department</h1> 
     </div> <br>
     <div class="card mt-5 mx-auto"> 
         <div class="card-header">
          <div>
-            <a class="btn btn-info float-right mb-4" href="{{route('cities.create')}}">Add</a>
+            <a class="btn btn-info float-right mb-4" href="{{route('departments.create')}}">Add</a>
          </div>
 
             <div class="">
-                <form action="{{route('cities.index')}}" method="POST">
+                <form action="{{route('departments.index')}}" method="POST">
                     @csrf
                     @method('GET')
                         <div class="input-group mb-2">
@@ -38,32 +38,29 @@
                     <thead class="text-dark">
                             <tr>
                                 <th>ID</th>
-                                <th>State Id</th>
-                                <th>Name</th>
-                                
+                                <th>Name</th> 
                                 <th>Manage</th>
                             </tr>
                     </thead>
                     <tbody>
-                        @foreach ($cities as $city)
+                        @foreach ($departments as $department)
                             <tr>
-                                <td>{{$city->id}}</td>
-                                <td>{{$city->state->name}}</td>
-                                <td>{{$city->name}}</td>
+                                <td>{{$department->id}}</td>
+                                <td>{{$department->name}}</td>
                                
                                 <td>
-                                    <a class="text-info m-3" href="{{route('cities.edit', $city)}}"><i class="fa fa-edit"></i></a>
+                                    <a class="text-info m-3" href="{{route('departments.edit', $department)}}"><i class="fa fa-edit"></i></a>
 
                                     <a onclick="
                                         event.preventDefault();
                                         if(confirm('are you sure you wanna delete??')){
-                                            document.getElementById('{{'form-delete'.$city->id}}').submit();
+                                            document.getElementById('{{'form-delete'.$department->id}}').submit();
                                         }
                                     
                                     
-                                    " class="text-danger m-1" href="{{route('cities.destroy', $city)}}"><i class="fa fa-trash"></i></a>
+                                    " class="text-danger m-1" href="{{route('departments.destroy', $department)}}"><i class="fa fa-trash"></i></a>
 
-                                    <form action="{{route('cities.destroy', $city)}}" method="POST" id="{{'form-delete'.$city->id}}">
+                                    <form action="{{route('departments.destroy', $department)}}" method="POST" id="{{'form-delete'.$department->id}}">
                                         @csrf
                                         @method('DELETE')
                                     </form>

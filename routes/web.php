@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\CityController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\StateController;
 use App\Http\Controllers\Backend\CountryController;
+use App\Http\Controllers\Backend\DepartmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,5 +30,6 @@ Route::resource('users', UserController::class)->middleware('auth');
 Route::resource('countries', CountryController::class)->middleware('auth');
 Route::resource('states', StateController::class)->middleware('auth');
 Route::resource('cities', CityController::class)->middleware('auth');
+Route::resource('departments', DepartmentController::class)->middleware('auth');
 
 
