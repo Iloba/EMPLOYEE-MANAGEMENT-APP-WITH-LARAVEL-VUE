@@ -10,7 +10,7 @@
                     @include('layouts.messages')
                 <div class="card">
                     <div class="card-header">
-                        {{ __('Add Country') }}
+                        {{ __('Add City') }}
                         
                         <a class="btn btn-info btn-sm float-right" href="{{route('states.index')}}">Back</a>
 
@@ -21,7 +21,7 @@
                             @csrf
                             <div class="form-group row">
                                 
-                                <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Country Code') }}</label>
+                                <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('State Code') }}</label>
     
                                 <div class="col-md-6">
                                     <select name="state_id" id="" class="form-control">

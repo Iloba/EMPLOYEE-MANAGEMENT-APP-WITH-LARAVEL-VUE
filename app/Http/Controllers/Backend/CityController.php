@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Models\City;
 use App\Models\State;
+use App\Models\Country;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CityStoreRequest;
@@ -54,26 +55,11 @@ class CityController extends Controller
         return redirect()->route('cities.index')->with('message', 'City Created Successfully');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function edit(City $city)
     {
-        return view('city.edit');
+        $states = State::all();
+        return view('city.edit', compact(['city', 'states']));
     }
 
     /**
@@ -85,7 +71,22 @@ class CityController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if($request->state_id === '--Select--'){
+            return back()->with('error', 'Please Select State');
+        }
+
+        $request->validate([
+            'name' => 'required'
+        ]);
+
+       $city = City::find($id);
+
+       $city->state_id = $request->state_id;
+       $city->name = $request->name;
+
+       $city->save();
+
+       return redirect()->route('cities.index')->with('message', 'City Updated Successfully');
     }
 
     /**

@@ -61,7 +61,7 @@
                                         }
                                     
                                     
-                                    " class="text-danger m-1" href="{{route('states.destroy', $city)}}"><i class="fa fa-trash"></i></a>
+                                    " class="text-danger m-1" href="{{route('cities.destroy', $city)}}"><i class="fa fa-trash"></i></a>
 
                                     <form action="{{route('states.destroy', $city)}}" method="POST" id="{{'form-delete'.$city->id}}">
                                         @csrf
