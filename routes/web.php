@@ -32,4 +32,8 @@ Route::resource('states', StateController::class)->middleware('auth');
 Route::resource('cities', CityController::class)->middleware('auth');
 Route::resource('departments', DepartmentController::class)->middleware('auth');
 
+Route::get('{any}', function(){
+    return view('employees.index');
+})->where('{any}', '.*');
+
 

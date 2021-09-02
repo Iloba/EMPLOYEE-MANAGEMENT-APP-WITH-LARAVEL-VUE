@@ -13,11 +13,14 @@ class DepartmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        
 
         $departments = Department::all();
-
+        if($request->has('search')){
+            $departments = Department::where('name', 'like', "%{$request->search}%")->get();
+        }
         return view('department.index', compact('departments'));
     }
 
@@ -38,8 +41,16 @@ class DepartmentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        $request->validate([
+            'name' => 'required'
+        ]);
+
+        Department::create([
+            'name' => $request->name
+        ]);
+
+        return redirect()->route('departments.index')->with('message', 'Department Created Successfully');
     }
 
     
@@ -62,9 +73,18 @@ class DepartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Department $department)
     {
-        //
+        $request->validate([
+            'name' => 'required'
+        ]);
+
+
+        $department->update([
+            'name' => $request->name
+        ]);
+
+        return redirect()->route('departments.index')->with('message', 'Update Successful');
     }
 
     /**
@@ -73,8 +93,10 @@ class DepartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Department $department)
     {
-        //
+        $department->delete();
+
+        return back()->with('message', 'Delete Successful');
     }
 }

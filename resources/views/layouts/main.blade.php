@@ -44,7 +44,7 @@
                     <span>Dashboard</span></a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="/employees">
                     <i class="fas fa-users"></i>
                     <span>Employee Management</span></a>
             </li>
