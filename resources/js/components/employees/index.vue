@@ -1,43 +1,30 @@
 <template>
-   <div class="mx-auto">
-       <h1 class="mb-5">Employees</h1>
+   <div class="">
+       <h2 class="mb-5">Employees</h2>
        <div class="container ">
            <div class="col-md-12">
                <div class="card ">
                    <div class="card-header">
                        <div class="">
-                          <a class="btn btn-primary float-right" href="">Add Employee</a>
+                           <router-link :to="{name: 'EmployeesCreate'}" class="btn btn-primary float-right">Add Employee</router-link>
                        </div>
                    </div>
                    <div class="card-body">
                        <div class="table-responsive">
-                           <table class="table table-bordered">
+                           <table class="table">
                                <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>Middle Name</th>
-                                        <th>Address</th>
-                                        <th>Department ID</th>
-                                        <th>Country ID</th>
-                                        <th>State ID</th>
-                                        <th>City ID</th>
-                                        <th>Zipcode</th>
-                                        <th>Birthdate</th>
-                                        <th>Date Hired</th>
-                                        <th>Edit</th>
+                                        <th scope="col">First Name</th>
+                                        <th scope="col">Last Name</th>
+                                        <th scope="col">Middle Name</th>
+                                        <th scope="col">Address</th>
+                                        <th scope="col">Department ID</th>
+                                        <th scope="col">Edit</th>
                                     </tr>
                                </thead>
                                <tbody>
                                     <tr>
-                                        <td>Hello</td>
-                                        <td>Hello</td>
-                                        <td>Hello</td>
-                                        <td>Hello</td>
-                                        <td>Hello</td>
-                                        <td>Hello</td>
-                                        <td>Hello</td>
                                         <td>Hello</td>
                                         <td>Hello</td>
                                         <td>Hello</td>

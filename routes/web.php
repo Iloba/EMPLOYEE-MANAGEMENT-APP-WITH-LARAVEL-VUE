@@ -34,6 +34,6 @@ Route::resource('departments', DepartmentController::class)->middleware('auth');
 
 Route::get('{any}', function(){
     return view('employees.index');
-})->where('{any}', '.*')->middleware('auth');
+})->where('any', '.*')->middleware('auth');
 
-
+ 

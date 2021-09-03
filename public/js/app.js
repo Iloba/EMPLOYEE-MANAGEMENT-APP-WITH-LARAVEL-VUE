@@ -1849,6 +1849,147 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
 
 /***/ }),
@@ -1883,19 +2024,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -37685,9 +37813,331 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c("div", [
+    _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "row justify-content-center" }, [
+        _c("div", { staticClass: "col-md-8" }, [
+          _c("div", { staticClass: "card" }, [
+            _c(
+              "div",
+              { staticClass: "card-header" },
+              [
+                _vm._v(
+                  "\n                    Create Employee\n                    "
+                ),
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "btn btn-info btn-sm float-right",
+                    attrs: { to: { name: "EmployeesIndex" } }
+                  },
+                  [_vm._v("Back")]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _vm._m(0)
+          ])
+        ])
+      ])
+    ])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-body" }, [
+      _c("form", { attrs: { method: "POST", action: "" } }, [
+        _c("div", { staticClass: "form-group row" }, [
+          _c(
+            "label",
+            {
+              staticClass: "col-md-4 col-form-label text-md-right",
+              attrs: { for: "username" }
+            },
+            [_vm._v("Last Name")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                id: "username",
+                type: "text",
+                name: "lastname",
+                value: "",
+                required: "",
+                autocomplete: "country_code",
+                autofocus: ""
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group row" }, [
+          _c(
+            "label",
+            {
+              staticClass: "col-md-4 col-form-label text-md-right",
+              attrs: { for: "lastname" }
+            },
+            [_vm._v("First Name")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                id: "lastname",
+                type: "text",
+                name: "firstname",
+                value: "",
+                required: "",
+                autocomplete: "name",
+                autofocus: ""
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group row" }, [
+          _c(
+            "label",
+            {
+              staticClass: "col-md-4 col-form-label text-md-right",
+              attrs: { for: "lastname" }
+            },
+            [_vm._v("Middle Name")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                id: "lastname",
+                type: "text",
+                name: "middlename",
+                value: "",
+                required: "",
+                autocomplete: "name",
+                autofocus: ""
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group row" }, [
+          _c(
+            "label",
+            {
+              staticClass: "col-md-4 col-form-label text-md-right",
+              attrs: { for: "lastname" }
+            },
+            [_vm._v("Address")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                id: "lastname",
+                type: "text",
+                name: "address",
+                value: "",
+                required: "",
+                autocomplete: "name",
+                autofocus: ""
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group row" }, [
+          _c(
+            "label",
+            {
+              staticClass: "col-md-4 col-form-label text-md-right",
+              attrs: { for: "lastname" }
+            },
+            [_vm._v("Department ")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-6" }, [
+            _c(
+              "select",
+              {
+                staticClass: "form-control",
+                attrs: { name: "department_id", id: "" }
+              },
+              [_c("option", { attrs: { value: "" } }, [_vm._v("1")])]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group row" }, [
+          _c(
+            "label",
+            {
+              staticClass: "col-md-4 col-form-label text-md-right",
+              attrs: { for: "lastname" }
+            },
+            [_vm._v("Country ")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-6" }, [
+            _c(
+              "select",
+              {
+                staticClass: "form-control",
+                attrs: { name: "country_id", id: "" }
+              },
+              [_c("option", { attrs: { value: "" } }, [_vm._v("1")])]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group row" }, [
+          _c(
+            "label",
+            {
+              staticClass: "col-md-4 col-form-label text-md-right",
+              attrs: { for: "lastname" }
+            },
+            [_vm._v("State ")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-6" }, [
+            _c(
+              "select",
+              {
+                staticClass: "form-control",
+                attrs: { name: "state_id", id: "" }
+              },
+              [_c("option", { attrs: { value: "" } }, [_vm._v("1")])]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group row" }, [
+          _c(
+            "label",
+            {
+              staticClass: "col-md-4 col-form-label text-md-right",
+              attrs: { for: "lastname" }
+            },
+            [_vm._v("City ")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-6" }, [
+            _c(
+              "select",
+              {
+                staticClass: "form-control",
+                attrs: { name: "city_id", id: "" }
+              },
+              [_c("option", { attrs: { value: "" } }, [_vm._v("1")])]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group row" }, [
+          _c(
+            "label",
+            {
+              staticClass: "col-md-4 col-form-label text-md-right",
+              attrs: { for: "lastname" }
+            },
+            [_vm._v("Zip Code")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                id: "lastname",
+                type: "text",
+                name: "zip_code",
+                value: "",
+                required: "",
+                autocomplete: "name",
+                autofocus: ""
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group row" }, [
+          _c(
+            "label",
+            {
+              staticClass: "col-md-4 col-form-label text-md-right",
+              attrs: { for: "lastname" }
+            },
+            [_vm._v("Birth Date")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                id: "lastname",
+                type: "text",
+                name: "birthdate",
+                value: "",
+                required: "",
+                autocomplete: "name",
+                autofocus: ""
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group row" }, [
+          _c(
+            "label",
+            {
+              staticClass: "col-md-4 col-form-label text-md-right",
+              attrs: { for: "lastname" }
+            },
+            [_vm._v("Date Hired")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                id: "lastname",
+                type: "text",
+                name: "date_hired",
+                value: "",
+                required: "",
+                autocomplete: "name",
+                autofocus: ""
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group row mb-0" }, [
+          _c("div", { staticClass: "col-md-6 offset-md-4" }, [
+            _c(
+              "button",
+              { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+              [
+                _vm._v(
+                  "\n                                    Create Employee\n                                "
+                )
+              ]
+            )
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -37735,96 +38185,75 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", {}, [
+    _c("h2", { staticClass: "mb-5" }, [_vm._v("Employees")]),
+    _vm._v(" "),
+    _c("div", { staticClass: "container " }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "card " }, [
+          _c("div", { staticClass: "card-header" }, [
+            _c(
+              "div",
+              {},
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "btn btn-primary float-right",
+                    attrs: { to: { name: "EmployeesCreate" } }
+                  },
+                  [_vm._v("Add Employee")]
+                )
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _vm._m(0)
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mx-auto" }, [
-      _c("h1", { staticClass: "mb-5" }, [_vm._v("Employees")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "container " }, [
-        _c("div", { staticClass: "col-md-12" }, [
-          _c("div", { staticClass: "card " }, [
-            _c("div", { staticClass: "card-header" }, [
-              _c("div", {}, [
-                _c(
-                  "a",
-                  {
-                    staticClass: "btn btn-primary float-right",
-                    attrs: { href: "" }
-                  },
-                  [_vm._v("Add Employee")]
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c("div", { staticClass: "table-responsive" }, [
-                _c("table", { staticClass: "table table-bordered" }, [
-                  _c("thead", [
-                    _c("tr", [
-                      _c("th", [_vm._v("ID")]),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("First Name")]),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("Last Name")]),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("Middle Name")]),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("Address")]),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("Department ID")]),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("Country ID")]),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("State ID")]),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("City ID")]),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("Zipcode")]),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("Birthdate")]),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("Date Hired")]),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("Edit")])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("tbody", [
-                    _c("tr", [
-                      _c("td", [_vm._v("Hello")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("Hello")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("Hello")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("Hello")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("Hello")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("Hello")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("Hello")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("Hello")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("Hello")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("Hello")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("Hello")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("Hello")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("Hello")])
-                    ])
-                  ])
-                ])
-              ])
+    return _c("div", { staticClass: "card-body" }, [
+      _c("div", { staticClass: "table-responsive" }, [
+        _c("table", { staticClass: "table" }, [
+          _c("thead", [
+            _c("tr", [
+              _c("th", [_vm._v("ID")]),
+              _vm._v(" "),
+              _c("th", { attrs: { scope: "col" } }, [_vm._v("First Name")]),
+              _vm._v(" "),
+              _c("th", { attrs: { scope: "col" } }, [_vm._v("Last Name")]),
+              _vm._v(" "),
+              _c("th", { attrs: { scope: "col" } }, [_vm._v("Middle Name")]),
+              _vm._v(" "),
+              _c("th", { attrs: { scope: "col" } }, [_vm._v("Address")]),
+              _vm._v(" "),
+              _c("th", { attrs: { scope: "col" } }, [_vm._v("Department ID")]),
+              _vm._v(" "),
+              _c("th", { attrs: { scope: "col" } }, [_vm._v("Edit")])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("tbody", [
+            _c("tr", [
+              _c("td", [_vm._v("Hello")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("Hello")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("Hello")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("Hello")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("Hello")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("Hello")])
             ])
           ])
         ])
