@@ -22,5 +22,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/employees/countries', [EmployeeDataController::class, 'countries']);
 Route::get('/employees/{country}/states', [EmployeeDataController::class, 'states']);
-Route::get('/employees/get-cities', [EmployeeDataController::class, 'cities']);
+Route::get('/employees/{state}/cities', [EmployeeDataController::class, 'cities']);
 Route::get('/employees/{state}/get-departments', [EmployeeDataController::class, 'departments']);

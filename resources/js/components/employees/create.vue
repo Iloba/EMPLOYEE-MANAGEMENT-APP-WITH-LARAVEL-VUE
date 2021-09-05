@@ -48,16 +48,7 @@
                                    
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label for="lastname" class="col-md-4 col-form-label text-md-right">Department </label>
-    
-                                <div class="col-md-6">
-                                  <select class="form-control" name="department_id" id="">
-                                      <option value="">1</option>
-                                  </select>
-                                   
-                                </div>
-                            </div>
+                            
                              <div class="form-group row">
                                 <label for="lastname" class="col-md-4 col-form-label text-md-right">Country </label>
                               <div class="col-md-6">
@@ -71,8 +62,8 @@
                                 <label for="lastname" class="col-md-4 col-form-label text-md-right">State </label>
     
                                 <div class="col-md-6">
-                                    <select class="form-control" name="state_id" id="">
-                                      <option value="">1</option>
+                                    <select class="form-control" name="state_id"  v-model="form.state_id" @change="getCities()">
+                                      <option v-for="state in states" :key="state.id" :value="state.id" >{{state.name}}</option>
                                   </select>
     
                                    
@@ -82,10 +73,20 @@
                                 <label for="lastname" class="col-md-4 col-form-label text-md-right">City </label>
     
                                 <div class="col-md-6">
-                                   <select class="form-control" name="city_id" id="">
-                                      <option value="">1</option>
+                                   <select class="form-control" name="city_id" v-model="form.city_id">
+                                      <option v-for="city in cities" :key="city.id" :value="city.id">{{city.name}}</option>
                                   </select>
     
+                                   
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="lastname" class="col-md-4 col-form-label text-md-right">Department </label>
+    
+                                <div class="col-md-6">
+                                  <select class="form-control" name="department_id" id="">
+                                      <option value="">1</option>
+                                  </select>
                                    
                                 </div>
                             </div>
@@ -169,9 +170,17 @@ export default {
             });
         },
         getStates(){
-             axios.get("/api/employees/"+this.form.country_id + "/states")
+             axios.get("/api/employees/"+ this.form.country_id + "/states")
             .then(res => {
                 this.states = res.data;
+            }).catch(error => {
+                console.log(console.error);
+            });
+        },
+         getCities(){
+             axios.get("/api/employees/"+ this.form.state_id + "/cities")
+            .then(res => {
+                this.cities = res.data;
             }).catch(error => {
                 console.log(console.error);
             });
