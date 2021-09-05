@@ -44,27 +44,7 @@
 
 <script>
 export default {
-    data(){
-        return{
-            countries: [],
-            states: [],
-            departments: [],
-            cities: []
-        };
-    },
-    created(){
-        this.getCountries()
-    },
-    methods:{
-        getCountries(){
-            axios.get("/api/employees/countries")
-            .then(res => {
-                this.countries = res.data;
-            }).catch(error => {
-                console.log(console.error);
-            });
-        }
-    } 
+   
 }
 
 </script>
