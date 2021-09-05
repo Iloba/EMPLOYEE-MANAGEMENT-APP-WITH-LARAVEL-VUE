@@ -2068,7 +2068,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      countries: [],
+      states: [],
+      departments: [],
+      cities: []
+    };
+  },
+  created: function created() {
+    this.getCountries();
+  },
+  methods: {
+    getCountries: function getCountries() {
+      var _this = this;
+
+      axios.get("/api/employees/countries").then(function (res) {
+        _this.countries = res.data;
+      })["catch"](function (error) {
+        console.log(console.error);
+      });
+    }
+  }
+});
 
 /***/ }),
 
