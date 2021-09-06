@@ -1980,6 +1980,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -1987,6 +1993,8 @@ __webpack_require__.r(__webpack_exports__);
       states: [],
       departments: [],
       cities: [],
+      message: '',
+      showMessage: false,
       form: {
         last_name: '',
         first_name: '',
@@ -2043,6 +2051,8 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     storeEmployee: function storeEmployee() {
+      var _this5 = this;
+
       axios.post("/api/employees", {
         'lastname': this.form.last_name,
         'firstname': this.form.first_name,
@@ -2056,7 +2066,8 @@ __webpack_require__.r(__webpack_exports__);
         'date_hired': this.form.date_hired,
         'zipcode': this.form.zip_code
       }).then(function (res) {
-        console.log(res);
+        _this5.showMessage = true;
+        _this5.message = res.data;
       })["catch"](function (error) {
         console.log(console.error);
       });
@@ -2173,8 +2184,10 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       axios["delete"]("/api/employees/" + id).then(function (res) {
-        _this2.showMessage = true;
-        _this2.message = res.data;
+        //Set Show mesage to true
+        _this2.showMessage = true; //Set Message to Response data
+
+        _this2.message = res.data; //Display New list of Employyes
 
         _this2.getEmployees();
       });
@@ -37927,6 +37940,16 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "container" }, [
+      _vm.showMessage
+        ? _c("div", [
+            _c("div", { staticClass: "alert alert-success" }, [
+              _vm._v(
+                "\n                " + _vm._s(_vm.message) + "\n            "
+              )
+            ])
+          ])
+        : _vm._e(),
+      _vm._v(" "),
       _c("div", { staticClass: "row justify-content-center" }, [
         _c("div", { staticClass: "col-md-8" }, [
           _c("div", { staticClass: "card" }, [

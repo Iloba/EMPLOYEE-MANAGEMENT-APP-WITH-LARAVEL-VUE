@@ -72,8 +72,13 @@ export default {
        deleteEmployee(id){
            axios.delete("/api/employees/" + id)
            .then(res => {
+               //Set Show mesage to true
                this.showMessage = true;
+
+               //Set Message to Response data
                this.message = res.data
+
+               //Display New list of Employyes
               this.getEmployees();
            });
        }

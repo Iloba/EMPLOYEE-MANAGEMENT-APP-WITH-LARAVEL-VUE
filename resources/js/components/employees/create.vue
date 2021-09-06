@@ -1,7 +1,13 @@
 <template>
     <div>
          <div class="container">
+            <div v-if="showMessage">
+                <div class="alert alert-success">
+                    {{message}}
+                </div>
+            </div>
         <div class="row justify-content-center">
+          
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
@@ -141,6 +147,9 @@ export default {
             states: [],
             departments: [],
             cities: [],
+            message: '',
+            showMessage: false,
+            
             form:{
                 last_name: '',
                 first_name: '',
@@ -207,7 +216,8 @@ export default {
                 'date_hired': this.form.date_hired,
                 'zipcode': this.form.zip_code,
             }).then(res => {
-                console.log(res);
+                this.showMessage = true;
+                this.message = res.data;
             }).catch(error => {
                 console.log(console.error);
             });

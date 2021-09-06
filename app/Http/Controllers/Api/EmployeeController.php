@@ -43,7 +43,7 @@ class EmployeeController extends Controller
      
         $employee = Employee::create($request->validated());
 
-        return response()->json($employee);
+        return response()->json('Employee Created Successfully');
     }
 
     /**
