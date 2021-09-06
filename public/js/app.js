@@ -2143,10 +2143,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      employees: []
+      employees: [],
+      showMessage: false,
+      message: ''
     };
   },
   created: function created() {
@@ -2160,6 +2167,16 @@ __webpack_require__.r(__webpack_exports__);
         _this.employees = res.data.data;
       })["catch"](function (error) {
         console.log(error);
+      });
+    },
+    deleteEmployee: function deleteEmployee(id) {
+      var _this2 = this;
+
+      axios["delete"]("/api/employees/" + id).then(function (res) {
+        _this2.showMessage = true;
+        _this2.message = res.data;
+
+        _this2.getEmployees();
       });
     }
   }
@@ -38572,6 +38589,14 @@ var render = function() {
     _c("h2", { staticClass: "mb-5" }, [_vm._v("Employees")]),
     _vm._v(" "),
     _c("div", { staticClass: "container " }, [
+      _vm.showMessage
+        ? _c("div", [
+            _c("div", { staticClass: "alert alert-success" }, [
+              _vm._v(" " + _vm._s(_vm.message) + " ")
+            ])
+          ])
+        : _vm._e(),
+      _vm._v(" "),
       _c("div", { staticClass: "col-md-12" }, [
         _c("div", { staticClass: "card " }, [
           _c("div", { staticClass: "card-header" }, [
@@ -38617,7 +38642,7 @@ var render = function() {
                           _c(
                             "router-link",
                             {
-                              staticClass: "btn btn-info",
+                              staticClass: "btn btn-info btn-sm",
                               attrs: {
                                 to: {
                                   name: "EmployeesEdit",
@@ -38626,6 +38651,19 @@ var render = function() {
                               }
                             },
                             [_vm._v("Edit")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-danger btn-sm",
+                              on: {
+                                click: function($event) {
+                                  return _vm.deleteEmployee(employee.id)
+                                }
+                              }
+                            },
+                            [_vm._v("Delete")]
                           )
                         ],
                         1
