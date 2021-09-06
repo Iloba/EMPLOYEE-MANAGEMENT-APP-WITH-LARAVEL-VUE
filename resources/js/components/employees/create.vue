@@ -12,20 +12,20 @@
                     </div>
     
                     <div class="card-body">
-                        <form method="POST" action="">
+                        <form @submit.prevent="storeEmployee">
                             
                             <div class="form-group row">
-                                <label for="username" class="col-md-4 col-form-label text-md-right">Last Name</label>
+                                <label for="username" class="col-md-4 col-form-label text-md-right" >Last Name</label>
     
                                 <div class="col-md-6">
-                                    <input id="username" type="text" class="form-control" name="lastname" value="" required autocomplete="country_code" autofocus>
+                                    <input id="username" type="text" class="form-control" name="lastname" v-model="form.last_name"  required autocomplete="country_code" autofocus>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="lastname" class="col-md-4 col-form-label text-md-right">First Name</label>
     
                                 <div class="col-md-6">
-                                    <input id="lastname" type="text" class="form-control" name="firstname" value="" required autocomplete="name" autofocus>
+                                    <input id="lastname" type="text" class="form-control" name="firstname"  v-model="form.first_name" required autocomplete="name" autofocus>
     
                                    
                                 </div>
@@ -34,7 +34,7 @@
                                 <label for="lastname" class="col-md-4 col-form-label text-md-right">Middle Name</label>
     
                                 <div class="col-md-6">
-                                    <input id="lastname" type="text" class="form-control" name="middlename" value="" required autocomplete="name" autofocus>
+                                    <input id="lastname" type="text" class="form-control" name="middlename" value="" v-model="form.middle_name" required autocomplete="name" autofocus>
     
                                    
                                 </div>
@@ -43,7 +43,7 @@
                                 <label for="lastname" class="col-md-4 col-form-label text-md-right">Address</label>
     
                                 <div class="col-md-6">
-                                    <input id="lastname" type="text" class="form-control" name="address" value="" required autocomplete="name" autofocus>
+                                    <input id="lastname" type="text" class="form-control" name="address" value="" v-model="form.address" required autocomplete="name" autofocus>
     
                                    
                                 </div>
@@ -84,8 +84,8 @@
                                 <label for="lastname" class="col-md-4 col-form-label text-md-right">Department </label>
     
                                 <div class="col-md-6">
-                                  <select class="form-control" name="department_id" id="">
-                                      <option value="">1</option>
+                                  <select class="form-control" name="department_id" v-model="form.department_id">
+                                      <option v-for="department in departments" :key="department.id" :value="department.id">{{department.name}}</option>
                                   </select>
                                    
                                 </div>
@@ -94,7 +94,7 @@
                                 <label for="lastname" class="col-md-4 col-form-label text-md-right">Zip Code</label>
     
                                 <div class="col-md-6">
-                                    <input id="lastname" type="text" class="form-control" name="zip_code" value="" required autocomplete="name" autofocus>
+                                    <input id="lastname" type="text" class="form-control" name="zipcode" v-model="form.zip_code"  required autofocus>
     
                                    
                                 </div>
@@ -103,16 +103,15 @@
                                 <label for="lastname" class="col-md-4 col-form-label text-md-right">Birth Date</label>
     
                                 <div class="col-md-6">
-                                    <input id="lastname" type="text" class="form-control" name="birthdate" value="" required autocomplete="name" autofocus>
-    
-                                   
+                                    <input id="lastname" type="text" class="form-control" name="birthdate" v-model="form.birthdate" value="" required autofocus>
+
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="lastname" class="col-md-4 col-form-label text-md-right">Date Hired</label>
     
                                 <div class="col-md-6">
-                                    <input id="lastname" type="text" class="form-control" name="date_hired" value="" required autocomplete="name" autofocus>
+                                    <input id="lastname" type="text" class="form-control" name="date_hired" v-model="form.date_hired" value="" required autofocus>
     
                                    
                                 </div>
@@ -143,8 +142,8 @@ export default {
             departments: [],
             cities: [],
             form:{
-                first_name: '',
                 last_name: '',
+                first_name: '',
                 middle_name: '',
                 address: '',
                 country_id: '',
@@ -158,7 +157,8 @@ export default {
         };
     },
     created(){
-        this.getCountries()
+        this.getCountries(),
+        this.getDepartments()
     },
     methods:{
         getCountries(){
@@ -181,6 +181,33 @@ export default {
              axios.get("/api/employees/"+ this.form.state_id + "/cities")
             .then(res => {
                 this.cities = res.data;
+            }).catch(error => {
+                console.log(console.error);
+            });
+        },
+        getDepartments(){
+            axios.get("/api/employees/departments")
+            .then(res => {
+                this.departments = res.data;
+            }).catch(error => {
+               console.log(console.error); 
+            });
+        },
+        storeEmployee(){
+            axios.post("/api/employees", {
+                 'lastname': this.form.last_name,
+                'firstname': this.form.first_name,
+                'middlename': this.form.middle_name,
+                'address': this.form.address,
+                'country_id': this.form.country_id,
+                'state_id': this.form.state_id,
+                'city_id': this.form.city_id,
+                'department_id': this.form.department_id,
+                'birthdate': this.form.birthdate,
+                'date_hired': this.form.date_hired,
+                'zipcode': this.form.zip_code,
+            }).then(res => {
+                console.log(res);
             }).catch(error => {
                 console.log(console.error);
             });

@@ -15,22 +15,23 @@
                                <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th scope="col">First Name</th>
-                                        <th scope="col">Last Name</th>
-                                        <th scope="col">Middle Name</th>
-                                        <th scope="col">Address</th>
-                                        <th scope="col">Department ID</th>
-                                        <th scope="col">Edit</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Address</th>
+                                        <th>Department ID</th>
+                                        <th>Edit</th>
                                     </tr>
                                </thead>
                                <tbody>
-                                    <tr>
-                                        <td>Hello</td>
-                                        <td>Hello</td>
-                                        <td>Hello</td>
-                                        <td>Hello</td>
-                                        <td>Hello</td>
-                                        <td>Hello</td>
+                                    <tr v-for="employee in employees" :key="employee.id" >
+                                        <td>{{employee.id}}</td>
+                                        <td>{{employee.lastname}}</td>
+                                        <td>{{employee.firstname}}</td>
+                                        <td>{{employee.address}}</td>
+                                        <td>{{employee.department.name}}</td>
+                                        <td>
+                                            <router-link :to="{name: 'EmployeesEdit', params: {id: employee.id}}" class="btn btn-info">Edit</router-link>
+                                        </td>
                                     </tr>
                                </tbody>
                            </table>
@@ -44,7 +45,24 @@
 
 <script>
 export default {
-   
+   data(){
+       return {
+           employees: []
+       }
+   },
+   created(){
+       this.getEmployees();
+   },
+   methods: {
+       getEmployees(){
+           axios.get("/api/employees")
+           .then(res => {
+               this.employees = res.data.data;
+           }).catch(error => {
+               console.log(error)
+           })
+       }
+   }
 }
 
 </script>

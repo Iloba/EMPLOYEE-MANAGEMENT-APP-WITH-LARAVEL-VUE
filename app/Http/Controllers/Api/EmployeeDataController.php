@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\State;
 use App\Models\Country;
+use App\Models\Department;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Api\EmployeeDataController;
@@ -24,6 +25,8 @@ class EmployeeDataController extends Controller
         return response()->json($state->cities);
     }
     public function departments(){
-        
+
+        $departments = Department::all();
+        return response()->json($departments);
     }
 }
