@@ -218,6 +218,7 @@ export default {
             }).then(res => {
                 this.showMessage = true;
                 this.message = res.data;
+                this.$router.push({'name': 'EmployeesIndex'});
             }).catch(error => {
                 console.log(console.error);
             });
