@@ -119,12 +119,12 @@ export default {
        },
        deleteEmployee(id){
            axios.delete("/api/employees/" + id)
-           .then(res => {
+           .then(result => {
                //Set Show mesage to true
                this.showMessage = true;
 
                //Set Message to Response data
-               this.message = res.data
+               this.message = result.data
 
                //Display New list of Employyes
               this.getEmployees();

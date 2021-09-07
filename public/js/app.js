@@ -2475,11 +2475,11 @@ __webpack_require__.r(__webpack_exports__);
     deleteEmployee: function deleteEmployee(id) {
       var _this3 = this;
 
-      axios["delete"]("/api/employees/" + id).then(function (res) {
+      axios["delete"]("/api/employees/" + id).then(function (result) {
         //Set Show mesage to true
         _this3.showMessage = true; //Set Message to Response data
 
-        _this3.message = res.data; //Display New list of Employyes
+        _this3.message = result.data; //Display New list of Employyes
 
         _this3.getEmployees();
       });
