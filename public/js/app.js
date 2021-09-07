@@ -2402,37 +2402,86 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       employees: [],
+      departments: [],
       showMessage: false,
-      message: ''
+      message: '',
+      search: null,
+      selectedDepartments: null
     };
+  },
+  watch: {
+    search: function search() {
+      this.getEmployees();
+    },
+    selectedDepartments: function selectedDepartments() {
+      this.getEmployees();
+    }
   },
   created: function created() {
     this.getEmployees();
+    this.getDepartments();
   },
   methods: {
     getEmployees: function getEmployees() {
       var _this = this;
 
-      axios.get("/api/employees").then(function (res) {
+      axios.get("/api/employees", {
+        params: {
+          search: this.search,
+          department_id: this.selectedDepartments
+        }
+      }).then(function (res) {
         _this.employees = res.data.data;
       })["catch"](function (error) {
         console.log(error);
       });
     },
-    deleteEmployee: function deleteEmployee(id) {
+    getDepartments: function getDepartments() {
       var _this2 = this;
+
+      axios.get("/api/employees/departments").then(function (res) {
+        _this2.departments = res.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    deleteEmployee: function deleteEmployee(id) {
+      var _this3 = this;
 
       axios["delete"]("/api/employees/" + id).then(function (res) {
         //Set Show mesage to true
-        _this2.showMessage = true; //Set Message to Response data
+        _this3.showMessage = true; //Set Message to Response data
 
-        _this2.message = res.data; //Display New list of Employyes
+        _this3.message = res.data; //Display New list of Employyes
 
-        _this2.getEmployees();
+        _this3.getEmployees();
       });
     }
   }
@@ -39484,27 +39533,110 @@ var render = function() {
       _c("div", { staticClass: "col-md-12" }, [
         _c("div", { staticClass: "card " }, [
           _c("div", { staticClass: "card-header" }, [
-            _c(
-              "div",
-              {},
-              [
-                _c(
-                  "router-link",
-                  {
-                    staticClass: "btn btn-primary float-right",
-                    attrs: { to: { name: "EmployeesCreate" } }
-                  },
-                  [_vm._v("Add Employee")]
-                )
-              ],
-              1
-            )
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-md-6" }, [
+                _c("form", [
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("div", { staticClass: "input-group mb-2" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model.lazy",
+                              value: _vm.search,
+                              expression: "search",
+                              modifiers: { lazy: true }
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            name: "search",
+                            id: "inlineFormInputGroup",
+                            placeholder: "Search"
+                          },
+                          domProps: { value: _vm.search },
+                          on: {
+                            change: function($event) {
+                              _vm.search = $event.target.value
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm._m(0)
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.selectedDepartments,
+                              expression: "selectedDepartments"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { name: "department_id" },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.selectedDepartments = $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            }
+                          }
+                        },
+                        _vm._l(_vm.departments, function(department) {
+                          return _c(
+                            "option",
+                            {
+                              key: department.id,
+                              domProps: { value: department.id }
+                            },
+                            [_vm._v(_vm._s(department.name))]
+                          )
+                        }),
+                        0
+                      )
+                    ])
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col-md-6" },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "btn btn-primary float-right",
+                      attrs: { to: { name: "EmployeesCreate" } }
+                    },
+                    [_vm._v("Add Employee")]
+                  )
+                ],
+                1
+              )
+            ])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
             _c("div", { staticClass: "table-responsive" }, [
               _c("table", { staticClass: "table" }, [
-                _vm._m(0),
+                _vm._m(1),
                 _vm._v(" "),
                 _c(
                   "tbody",
@@ -39565,6 +39697,21 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-prepend" }, [
+      _c(
+        "button",
+        {
+          staticClass: "input-group-text btn btn-info",
+          attrs: { type: "submit" }
+        },
+        [_c("i", { staticClass: "fa fa-search" })]
+      )
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

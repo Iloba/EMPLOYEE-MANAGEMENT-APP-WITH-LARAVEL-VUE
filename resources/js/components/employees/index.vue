@@ -9,9 +9,32 @@
            <div class="col-md-12">
                <div class="card ">
                    <div class="card-header">
-                       <div class="">
-                           <router-link :to="{name: 'EmployeesCreate'}" class="btn btn-primary float-right">Add Employee</router-link>
-                       </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                            <form>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="input-group mb-2">
+                                                <input type="text" class="form-control" v-model.lazy="search" name="search" id="inlineFormInputGroup" placeholder="Search">
+                                            <div class="input-group-prepend">
+                                                <button type="submit" class="input-group-text btn btn-info"><i class="fa fa-search"></i></button>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    <div class="col-md-6">
+                                        <select class="form-control" name="department_id" v-model="selectedDepartments">
+                                            <option v-for="department in departments" :key="department.id" :value="department.id">{{department.name}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                               
+                            </form>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <router-link :to="{name: 'EmployeesCreate'}" class="btn btn-primary float-right">Add Employee</router-link>
+                        </div>
+                      </div>
                    </div>
                    <div class="card-body">
                        <div class="table-responsive">
@@ -53,18 +76,43 @@ export default {
    data(){
        return {
            employees: [],
+           departments: [],
            showMessage: false,
-           message: ''
+           message: '',
+           search: null,
+           selectedDepartments: null 
+       }
+   },
+   watch:{
+       search(){
+           this.getEmployees();
+       },
+       selectedDepartments(){
+           this.getEmployees();
        }
    },
    created(){
        this.getEmployees();
+        this.getDepartments();
    },
    methods: {
         getEmployees(){
-           axios.get("/api/employees")
+           axios.get("/api/employees", {
+               params:{
+                   search: this.search,
+                   department_id: this.selectedDepartments
+               }
+           })
            .then(res => {
                this.employees = res.data.data;
+           }).catch(error => {
+               console.log(error)
+           })
+       },
+       getDepartments(){
+            axios.get("/api/employees/departments")
+           .then(res => {
+               this.departments = res.data;
            }).catch(error => {
                console.log(error)
            })
