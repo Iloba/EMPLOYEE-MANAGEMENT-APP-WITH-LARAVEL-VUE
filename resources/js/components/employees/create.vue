@@ -26,6 +26,7 @@
                                 <div class="col-md-6">
                                     <input id="username" type="text" class="form-control" name="lastname" v-model="form.last_name"  required autocomplete="country_code" autofocus>
                                 </div>
+                               
                             </div>
                             <div class="form-group row">
                                 <label for="lastname" class="col-md-4 col-form-label text-md-right">First Name</label>
@@ -204,7 +205,7 @@ export default {
         },
         storeEmployee(){
             axios.post("/api/employees", {
-                 'lastname': this.form.last_name,
+                'lastname': this.form.last_name,
                 'firstname': this.form.first_name,
                 'middlename': this.form.middle_name,
                 'address': this.form.address,

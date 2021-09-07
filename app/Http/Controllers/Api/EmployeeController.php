@@ -18,7 +18,7 @@ class EmployeeController extends Controller
      */
     public function index(Request $request)
     {
-        $employees = Employee::all();
+        $employees = Employee::latest()->get();
         if($request->has('search')){
             $employees = Employee::where('lastname', 'like', "%{$request->search}%")
             ->orwhere('firstname', 'like', "%{$request->search}%")
